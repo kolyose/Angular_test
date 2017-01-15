@@ -1,5 +1,5 @@
-<h1>Title: {{ $ctrl.data.title }} </h1>
+<button type="button" class="btn btn-link" ng-click="$ctrl.edit()"><h3>{{ $ctrl.data.title }}</h3></button>
 <div>
     Description: {{ $ctrl.data.description}}
 </div>
-<button ng-click="$ctrl.delete()">Delete</button> 
+<button type="button" class="btn btn-danger" ng-click="$ctrl.delete()">Delete</button>

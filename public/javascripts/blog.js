@@ -2,16 +2,12 @@ angular.module('blog')
 .component('blog', {
     templateUrl: 'blog.html',
     controller($uibModal){    
-
-        const $ctrl = this;
-        $ctrl.data = "hello!"
-
-        $ctrl.addArticle = () => {
+        this.editArticle = (articleData) => {
             let modalInstance = $uibModal.open({
                 component: 'articleDetails',
                 resolve: {
                     data: function () {
-                        return $ctrl.data;
+                        return articleData;
                     }
                 }
             });
