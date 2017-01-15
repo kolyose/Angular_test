@@ -1,4 +1,4 @@
-angular.module('blog', ['ui.bootstrap.modal'])
+angular.module('blog', ['ui.bootstrap'])
 .component('blog', {
     template: `<record-list></record-list>
                 <hr>
