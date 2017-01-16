@@ -1,21 +1,16 @@
 angular.module('blog')
 .component('articleDetails', {
     templateUrl: "articleDetails.html",
-    controller(){
-        this.$onInit = () => {
-            this.data = this.resolve.data;
+    controller(){     
+        this.ok = () => {
+            this.close({$value:{title: this.title, description:this.description}});
         }
 
-        this.ok = () => {
-            this.close();
-        }
-        this.cancel = () => {
-            this.dismiss();
+        this.isSaveAllowed = () => {
+            return (this.title != undefined) && (this.title != ""); 
         }
     },    
     bindings: {
-        resolve: '<',
-        close: '&',
-        dismiss: '&'
+        close: '&'
     }
 })

@@ -2,19 +2,23 @@ angular.module('blog')
 .component('blog', {
     templateUrl: 'blog.html',
     controller($uibModal){    
-        this.editArticle = (articleData) => {
+        this.articles = [
+            {title: `Record!!`, description: "Record1 description"},
+            {title: `Hi, I'm a record 2!`, description: "I'm better than first one"}
+        ];
+
+        this.addArticle = () => {
             let modalInstance = $uibModal.open({
-                component: 'articleDetails',
-                resolve: {
-                    data: function () {
-                        return articleData;
-                    }
-                }
+                component: 'articleDetails'
             });
 
             modalInstance.result.then(
-                () => {console.log("resolved")}, 
-                () => {console.log("rejected")}
+                (data) => {
+                    this.articles.push(data);
+                }, 
+                (err) => {
+                    console.error(err);
+                }
             );
         }
     }                
