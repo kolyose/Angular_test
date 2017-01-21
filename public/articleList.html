@@ -1,5 +1,7 @@
 <div ng-repeat="article in $ctrl.articles">
-    <a ng-link="['ArticleDetails', {id:article.id, onDelete:$ctrl.deleteArticleById}]">{{article.title}}</a>
+    <a ng-link="['ArticleDetails', {id:article.id}]">{{article.title}}</a>
     <button type="button" class="btn btn-danger" ng-click="$ctrl.deleteArticleById(article.id)">Delete</button>
     <hr>
 </div>
+
+<button type="button" class="btn btn-default" ng-click="$ctrl.addArticle()">Add article</button>

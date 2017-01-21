@@ -3,8 +3,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a {  
+  display: block;
 }
 
 textarea{
@@ -12,7 +12,10 @@ textarea{
   width: 100%;
 }
 
-
 input{ 
   width: 100%;
+}
+
+button{
+  margin: 10px 10px 10px 0px;
 }

@@ -1,7 +1,7 @@
 <div ng-if="$ctrl.article">
-    <title>{{$ctrl.article.title}}</title>
+    <h3>{{$ctrl.article.title}}</h3>
     <div>{{$ctrl.article.description}}</div>
-    <button type="button" class="btn" ng-link="['ArticlesList']">Back</button>
+    <button type="button" class="btn" ng-link="['ArticleList']">Back</button>
     <button type="button" class="btn btn-danger" ng-click="$ctrl.delete()">Delete</button>
 </div>
 
