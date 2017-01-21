@@ -40,7 +40,11 @@ angular.module('articles', ['ui.bootstrap'])
 
             modalInstance.result.then(
                 (data) => {
-                    data.id = $ctrl.articles[$ctrl.articles.length-1].id + 1;
+                    data.id = 0;
+                    const length = $ctrl.articles.length;
+                    if (length > 0){
+                        data.id = $ctrl.articles[$ctrl.articles.length-1].id + 1;
+                    }                    
                     $ctrl.articles.push(data);
                 }, 
                 (err) => {
