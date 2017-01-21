@@ -1,6 +1,10 @@
 angular.module('blog')
 .component('blog', {
     templateUrl: 'blog.html',
+    $routeConfig: [
+        {path: '/articles/...', name:'Articles', component:'articles', useAsDefault: true},
+        {path: '/auth', name:'Auth', component:'auth'}
+    ]/*,
     controller($uibModal){    
         this.articles = [
             {title: `Record!!`, description: "Record1 description"},
@@ -9,7 +13,7 @@ angular.module('blog')
 
         this.addArticle = () => {
             let modalInstance = $uibModal.open({
-                component: 'articleDetails'
+                component: 'addArticle'
             });
 
             modalInstance.result.then(
@@ -21,5 +25,5 @@ angular.module('blog')
                 }
             );
         }
-    }                
+    }  */              
 })

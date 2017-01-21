@@ -1,0 +1,12 @@
+ <div class="modal-header">
+    <h4 class="modal-title">Add new article</h4>
+</div>
+<div class="modal-body">
+    <input type="text" placeholder="Title" ng-model="$ctrl.title"></input>
+    <textarea type="text" placeholder="Description" ng-model="$ctrl.description"></textarea>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="!$ctrl.isSaveAllowed()" ng-click="$ctrl.ok()">Save</button>
+</div>

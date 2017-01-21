@@ -1,6 +1,6 @@
-angular.module('blog')
-.component('articleDetails', {
-    templateUrl: "articleDetails.html",
+angular.module('articles')
+.component('addArticle', {
+    templateUrl: "addArticle.html",
     controller(){     
         this.ok = () => {
             this.close({$value:{title: this.title, description:this.description}});

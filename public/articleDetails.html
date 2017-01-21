@@ -1,12 +1,16 @@
- <div class="modal-header">
-    <h4 class="modal-title">Add new article</h4>
+<div ng-if="$ctrl.article">
+    <title>{{$ctrl.article.title}}</title>
+    <div>{{$ctrl.article.description}}</div>
+    <button type="button" class="btn" ng-link="['ArticlesList']">Back</button>
+    <button type="button" class="btn btn-danger" ng-click="$ctrl.delete()">Delete</button>
 </div>
-<div class="modal-body">
-    <input type="text" placeholder="Title" ng-model="$ctrl.title"></input>
-    <textarea type="text" placeholder="Description" ng-model="$ctrl.description"></textarea>
+
+
+<!--
+<button type="button" class="btn btn-link" ng-click="$ctrl.view()"><h3>{{ $ctrl.data.title }}</h3></button>
+<div>
+    Description: {{ $ctrl.data.description}}
 </div>
-</div>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-success" ng-disabled="!$ctrl.isSaveAllowed()" ng-click="$ctrl.ok()">Save</button>
-</div>
+<button type="button" class="btn btn-danger" ng-click="$ctrl.delete()">Delete</button>
+-->
+
