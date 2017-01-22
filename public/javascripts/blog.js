@@ -7,7 +7,7 @@ angular.module('blog')
     ],
     controller(authService){    
 
-        this.authorized = false;
+        this.isAuthorized = authService.isAuthorized;
 
         this.logout = () =>{
            authService.logout();

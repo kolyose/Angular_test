@@ -5,17 +5,23 @@ angular.module('auth', [])
 .component('auth', {
     templateUrl: 'auth.html',
     controller(authService){
-        authService.test();
+        authService.authorize();
     }
 })
 
 function AuthService(){
-    
-    this.test = () => {
-        console.log('AuthService is working');
+
+    this.authorized = false;
+
+    this.isAuthorized = () => {
+        return this.authorized;
+    }
+
+    this.authorize = () => {
+        this.authorized = true;
     }
 
     this.logout = () => {
-        console.log('AuthService:logout()');
+        this.authorized = false;
     }
 }

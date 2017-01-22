@@ -12,7 +12,7 @@ angular.module('articles', ['ui.bootstrap'])
 
 .component('articleList', {
     templateUrl: "articleList.html",
-    controller(articlesService, $uibModal){    
+    controller(articlesService, authService, $uibModal){    
         const $ctrl = this;
 
         this.$routerOnActivate = (next) => {
@@ -52,12 +52,14 @@ angular.module('articles', ['ui.bootstrap'])
                 }
             );
         }
+
+        this.isAuthorized = authService.isAuthorized;
     }
 })
 
 .component('articleDetails', {
     templateUrl: "articleDetails.html",
-    controller(articlesService){
+    controller(articlesService, authService){
         const $ctrl = this;
 
         this.$routerOnActivate = (next) => {
@@ -71,6 +73,8 @@ angular.module('articles', ['ui.bootstrap'])
         this.delete = () => {
            this.$router.navigate(['ArticleList', {deleteId: this.id}]);
         } 
+
+        this.isAuthorized = authService.isAuthorized;
     },
     bindings: {
         $router: '<' 
