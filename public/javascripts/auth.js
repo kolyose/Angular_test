@@ -7,6 +7,14 @@ angular.module('auth', [])
     controller(authService){
         //authService.authorize();
         this.user = {}
+
+        this.login = () => {
+            console.log("login")
+        }
+
+        this.register = () => {
+            console.log("register")
+        }
     }
 })
 
