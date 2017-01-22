@@ -4,4 +4,8 @@
 <button type="button" class="btn btn-default" ng-click="$ctrl.addArticle()">Add article</button>
 -->
 <title>Hello in my blog!</title>
+<header>
+    <button type="button" class="btn btn-link" ng-if="!$ctrl.authorized" ng-link="['Auth']">Auth</button>
+     <button type="button" class="btn btn-link" ng-if="$ctrl.authorized" ng-click="$ctrl.logout()">Logout</button>
+</header>
 <ng-outlet></ng-outlet>
