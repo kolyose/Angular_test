@@ -19,3 +19,10 @@ input{
 button{
   margin: 10px 10px 10px 0px;
 }
+
+.validation-error {
+  font-size: smaller;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  color: red;
+}
