@@ -2,6 +2,7 @@ angular.module('auth', [])
 
 .service('authService', AuthService)
 .directive('isEqualTo', isEqualTo)
+.directive('validateEmailAsync', validateEmailAsync)
 
 .component('auth', {
     templateUrl: 'auth.html',
@@ -52,6 +53,25 @@ function isEqualTo(){
             scope.$watch('isEqualTo', function(){
                 ngModel.$validate();
             });
+        }
+    }
+}
+
+function validateEmailAsync(){
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ngModel){
+            const fakeEmails = ['test@mail.ru', 'test'];
+            ngModel.$asyncValidators.validateEmailAsync = function (modelValue, viewValue){
+                return new Promise((resolve, reject) => {                  
+                    setTimeout(() => {
+                        if (fakeEmails.indexOf(modelValue) > -1){
+                            return reject(new Error("Email is already taken!"));
+                        }
+                        resolve(true);
+                    }, 1000);
+                });
+            }
         }
     }
 }
