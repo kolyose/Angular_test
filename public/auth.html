@@ -4,33 +4,37 @@
         <h3>Login</h3>
         <form name="loginForm" ng-submit="$ctrl.login()" novalidate>
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="$ctrl.login.user.email" ng-model-options="{updateOn: 'mousedown blur'}" required>     
+                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="$ctrl.login.user.email" ng-model-options="{updateOn: 'mousedown blur'}" 
+                    ng-readonly="$ctrl.isAuthenticating" required>     
                 <span class="validation-error" ng-show="loginForm.email.$error.email">Email adress is invalid!</span>              
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" ng-model="$ctrl.login.user.password" required>
+                <input type="password" class="form-control" placeholder="Password" ng-model="$ctrl.login.user.password" ng-readonly="$ctrl.isAuthenticating" required>
             </div>
-            <button type="submit" class="btn btn-info">Sign in</button>
+            <button type="submit" class="btn btn-info" ng-disabled="loginForm.$invalid||$ctrl.isAuthenticating">Sign in</button>
         </form>
     </div>
     <div class="col-md-2">
         <h3>Register</h3>
         <form name="registrationForm" ng-submit="$ctrl.register()" novalidate>
             <div class="form-group">
-                <input name="email" type="email" class="form-control" placeholder="email" ng-model="$ctrl.registration.user.email" validate-email-async ng-model-options="{updateOn: 'mousedown blur'}" required>
-                <span class="validation-error" ng-show="registrationForm.email.$error.email">Email adress is invalid!</span>          
+                <input name="email" type="email" class="form-control" placeholder="Email" ng-model="$ctrl.registration.user.email" validate-email-async ng-model-options="{updateOn: 'mousedown blur'}" 
+                    ng-readonly="$ctrl.isAuthenticating" required>               
+                <span class="validation-error" ng-show="registrationForm.email.$error.email">Enter a valid email adress.</span>          
                 <span class="validation-error" ng-show="registrationForm.email.$error.validateEmailAsync">Email has already taken!</span>             
                 <!--span ng-show="registrationForm.email.$pending.validateEmailAsync">Checking email...</span-->                    
             </div>
             <div class="form-group">
-                <input name="password" type="password" class="form-control" placeholder="Password" ng-model="$ctrl.registration.user.password" required>
+                <input name="password" type="password" class="form-control" placeholder="Password" ng-model="$ctrl.registration.user.password" ng-model-options="{updateOn: 'mousedown blur'}" 
+                    ng-readonly="$ctrl.isAuthenticating" required>
             </div>
             <div class="form-group">
                 <input name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" 
-                    ng-model="$ctrl.registration.user.confirmPassword" is-equal-to="$ctrl.registration.user.password" ng-model-options="{updateOn: 'mousedown blur'}" required>
+                    ng-model="$ctrl.registration.user.confirmPassword" is-equal-to="$ctrl.registration.user.password" ng-readonly="$ctrl.isAuthenticating" required>
+                <!--span class="validation-error" ng-show="registrationForm.confirmPassword.$error.required">Confirm your password.</span-->
                 <span class="validation-error" ng-show="registrationForm.confirmPassword.$error.isEqualTo">Passwords don't match!</span>
             </div>
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="registrationForm.$invalid||$ctrl.isAuthenticating">Sign up</button>
         </form>
     </div>
 </div>

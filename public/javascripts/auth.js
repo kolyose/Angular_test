@@ -8,14 +8,17 @@ angular.module('auth', [])
     templateUrl: 'auth.html',
     controller(authService){
         
+        this.isAuthenticating = false;
         this.login = {user:{}};
         this.registration = {user:{}};
 
         this.login = () => {
+            this.isAuthenticating = true;
             console.log("login")
         }
 
         this.register = () => {
+            this.isAuthenticating = true;
             console.log("register")
         }
     }
@@ -46,10 +49,8 @@ function isEqualTo(){
         },
         link: function (scope, elem, attrs, ngModel){
             ngModel.$validators.isEqualTo = function (modelValue, viewValue){
-                const result = (modelValue == scope.isEqualTo);
-                return result;
+                return (ngModel.$isEmpty(modelValue) && ngModel.$isEmpty(scope.isEqualTo)) || (modelValue === scope.isEqualTo);
             }
-
             scope.$watch('isEqualTo', function(){
                 ngModel.$validate();
             });
@@ -65,7 +66,7 @@ function validateEmailAsync(){
             ngModel.$asyncValidators.validateEmailAsync = function (modelValue, viewValue){
                 return new Promise((resolve, reject) => {                  
                     setTimeout(() => {
-                        if (fakeEmails.indexOf(modelValue) > -1){
+                        if (~fakeEmails.indexOf(modelValue)){
                             return reject(new Error("Email is already taken!"));
                         }
                         resolve(true);
